@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*JSON.stringify()除了要接收将要序列化的js对象，还可以接收两个参数
+			 * 第一个是过滤器，可以是一个数组或者是一个函数
+			 * 第二个参数是一个选项，表示是否在JSON字符串中保留缩进
+			 */
+			var book={
+				title:"Prefessional Javascript",
+				authors:[
+					"Nicholas C. Zakas"
+				],
+				edition:3,
+				year:2018
+			};
+			
+			var jsonText1=JSON.stringify(book,["title","authors"]);
+			console.log(jsonText1);
+			//{"title":"Prefessional Javascript","authors":["Nicholas C. Zakas"]}
+			
+			var jsonText2=JSON.stringify(book,function(key,value){
+				switch(key){
+					case "authors":
+						return value.join(",");
+					case "year":
+						return 2010;
+					case "edition":
+						return 1;
+					default:
+						return value;
+				}
+			});
+			
+			console.log(jsonText2);
+//			{"title":"Prefessional Javascript","authors":"Nicholas C. Zakas","edition":1,"year":2010}
+			
+			var jsonText3=JSON.stringify(book,null,3);
+			console.log(jsonText3); //本来是不留空格的，现在因为传入第三个参数有空缩进
+	//		{
+	//		   "title": "Prefessional Javascript",
+	//		   "authors": [
+	//		      "Nicholas C. Zakas"
+	//		   ],
+	//		   "edition": 3,
+	//		   "year": 2018
+	//		}
+			
+		
+		</script>
+	</body>
+</html>

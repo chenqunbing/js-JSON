@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*JSON.parse（）也可以接收另外参数，这个参数是函数，将在每个键值对上调用，这个函数被称为还原函数
+			 * JSON.stringify()接收的第三个参数为函数，那个函数叫做过滤函数
+			 */
+			var book={
+				title:"Prefessional Javascript",
+				authors:[
+					"Nicholas C. Zakas"
+				],
+				edition:3,
+				year:2018,
+				releaseDate:new Date(2011,11,1)
+			};
+			var jsondata=JSON.stringify(book);
+			console.log(jsondata);
+			var bookCopy=JSON.parse(jsondata,function(key,value){
+				if(key=="releaseDate"){
+					return new Date(value);
+				}else{
+					return value;
+				}
+			});
+			
+			console.log(bookCopy);
+//			{title: "Prefessional Javascript", authors: Array(1), edition: 3, year: 2018, releaseDate: Thu Dec 01 2011 00:00:00 GMT+0800 (中国标准时间)}
+			console.log(bookCopy.releaseDate.getFullYear());
+			//2011
+		</script>
+	</body>
+</html>

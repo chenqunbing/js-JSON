@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var jsondata1='{"staff":[{"name":"Mike","age":12},{"name":"Lili","age":18},{"name":"Jhon","age":22}]}';
+			
+			var jsondata2='{"title":"java","author":["Linda","Cindy"],"edition":2,"year":2018}';
+			
+			/*为什么要在eval函数中添加("("+jsondata1+")")？
+			 * 避免eval将jsondata1当成一个语句块来处理，所以强制将它转换为一个表达式
+			 */
+			var obj1=eval("("+jsondata1+")");
+			console.log(typeof jsondata1) //string
+			console.log(typeof obj1); //object
+			console.log("eval函数解析出的对象："+obj1.staff[0].name+","+obj1.staff[0].age);//eval函数解析出的对象：Mike,12
+			
+			var obj2=JSON.parse(jsondata2);
+			console.log("JSON.parse解析出来的数据："+obj2.title+","+obj2.author);//JSON.parse解析出来的数据：java,Linda,Cindy
+			console.log(obj2.author); //["Linda", "Cindy"]
+		</script>
+	</body>
+</html>

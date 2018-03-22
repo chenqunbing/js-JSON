@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var book={
+				title:"Prefessional Javascript",
+				authors:[
+					"Nicholas C. Zakas"
+				],
+				edition:3,
+				year:2018,
+				toJSON:function(){
+					return this.title;
+				}
+			};
+			
+			var jsonText=JSON.stringify(book);
+			console.log(jsonText);//"Prefessional Javascript"
+			
+			
+		</script>
+	</body>
+</html>

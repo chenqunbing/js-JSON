@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var book={
+				title:"Prefessional Javascript",
+				authors:[
+					"Nicholas C. Zakas"
+				],
+				edition:3,
+				year:2018
+			};
+			
+			var jsonText=JSON.stringify(book); //将js对象转换为json字符串
+			console.log(typeof jsonText);//string
+			console.log(jsonText); //{"title":"Prefessional Javascript","authors":["Nicholas C. Zakas"],"edition":3,"year":2018}
+			
+			var bookCopy=JSON.parse(jsonText); //将json字符串转换为js对象
+			console.log(bookCopy); //{title: "Prefessional Javascript", authors: Array(1), edition: 3, year: 2018}
+		</script>
+	</body>
+</html>
